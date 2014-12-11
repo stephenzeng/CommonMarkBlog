@@ -1,4 +1,8 @@
 CommonMarkBlog
 ==============
 
-### A simple blog engine using MVC5, CommonMark.js and RavenDB
+A simple blog engine that uses
+- MVC5
+- CommonMark.js
+- Bootstrap
+- RavenDB
