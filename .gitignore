@@ -1,0 +1,13 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/CommonMarkBlog/App_Data
+/CommonMarkBlog/bin
+/CommonMarkBlog/obj/Debug
+/CommonMarkBlog/CommonMarkBlog.csproj.user
+/CommonMarkBlog/local.config
+/CommonMarkBlog.sln.ide
+/packages/Antlr.3.4.1.9004
+/packages
+/CommonMarkBlog.v14.suo
