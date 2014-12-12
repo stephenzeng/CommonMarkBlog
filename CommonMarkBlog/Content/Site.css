@@ -1,5 +1,5 @@
 ﻿body {
-    padding-top: 20px;
+    padding-top: 80px;
     padding-bottom: 20px;
     background-color: #f4f4f4;
 }
@@ -8,6 +8,17 @@
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+}
+
+.site-header {
+    background-color: #dfdfdf;
+    color: #444;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #ccc;
+}
+
+.site-header a {
+    color: #333;
 }
 
 #Content {

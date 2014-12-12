@@ -8,48 +8,69 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-
-    <div class="container body-content">
-        @if (!string.IsNullOrEmpty(ViewBag.InfoMessage))
-        {
-            <div class="alert alert-info alert-dismissible margin-top-5" role="alert">
-                <button type="button" class="close" data-dismiss="alert">
-                    <span aria-hidden="true">&times;</span>
-                    <span class="sr-only">Close</span>
+    <div class="navbar navbar-fixed-top site-header">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
                 </button>
-                @ViewBag.InfoMessage
+                <span class="navbar-brand" style="font-family: Tahoma, Geneva, sans-serif; font-weight: bolder;">
+                    <a href="@Url.Action("Index", "Home")">COMMONMARK<span style="color: #cc0000">B</span>LOG</a>
+                </span>
             </div>
-        }
-
-        @if (!string.IsNullOrEmpty(ViewBag.WarningMessage))
-        {
-            <div class="alert alert-warning alert-dismissible margin-top-5" role="alert">
-                <button type="button" class="close" data-dismiss="alert">
-                    <span aria-hidden="true">&times;</span>
-                    <span class="sr-only">Close</span>
-                </button>
-                <strong>WARNING:</strong> @ViewBag.WarningMessage
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav pull-right">
+                    <li>
+                        <a href="@Url.Action("Index", "Home")"><i class="fa fa-home fa-lg"></i> Home</a>
+                    </li>
+                </ul>
             </div>
-        }
-
-        @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
-        {
-            <div class="alert alert-danger alert-dismissible margin-top-5" role="alert">
-                <button type="button" class="close" data-dismiss="alert">
-                    <span aria-hidden="true">&times;</span>
-                    <span class="sr-only">Close</span>
-                </button>
-                <strong>ERROR:</strong> @ViewBag.ErrorMessage
-            </div>
-        }
-
-        @RenderBody()
+        </div>
     </div>
 
+<div class="container body-content">
+    @if (!string.IsNullOrEmpty(ViewBag.InfoMessage))
+    {
+        <div class="alert alert-info alert-dismissible margin-top-5" role="alert">
+            <button type="button" class="close" data-dismiss="alert">
+                <span aria-hidden="true">&times;</span>
+                <span class="sr-only">Close</span>
+            </button>
+            @ViewBag.InfoMessage
+        </div>
+    }
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/jqueryval")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    @if (!string.IsNullOrEmpty(ViewBag.WarningMessage))
+    {
+        <div class="alert alert-warning alert-dismissible margin-top-5" role="alert">
+            <button type="button" class="close" data-dismiss="alert">
+                <span aria-hidden="true">&times;</span>
+                <span class="sr-only">Close</span>
+            </button>
+            <strong>WARNING:</strong> @ViewBag.WarningMessage
+        </div>
+    }
+
+    @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+    {
+        <div class="alert alert-danger alert-dismissible margin-top-5" role="alert">
+            <button type="button" class="close" data-dismiss="alert">
+                <span aria-hidden="true">&times;</span>
+                <span class="sr-only">Close</span>
+            </button>
+            <strong>ERROR:</strong> @ViewBag.ErrorMessage
+        </div>
+    }
+
+    @RenderBody()
+</div>
+
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/bundles/bootstrap")
+@RenderSection("scripts", required: false)
 </body>
 </html>
