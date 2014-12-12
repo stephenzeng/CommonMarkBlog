@@ -11,3 +11,5 @@
 /packages/Antlr.3.4.1.9004
 /packages
 /CommonMarkBlog.v14.suo
+/CommonMarkBlog/Raven/CompiledIndexCache
+*.zip

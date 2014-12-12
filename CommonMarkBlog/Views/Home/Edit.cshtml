@@ -1,0 +1,30 @@
+﻿@model CommonMarkBlog.Models.Post
+
+<div>
+    @using (Html.BeginForm())
+    {
+        <div class="form-group">
+            @Html.TextBoxFor(m => m.Title, new {@class = "form-control", placeholder = "Title"})
+            @Html.ValidationMessageFor(m => m.Title)
+        </div>
+        <div class="form-group">
+            @Html.TextAreaFor(m => m.Content, new {@class = "form-control", placeholder = "Content"})
+            @Html.ValidationMessageFor(m => m.Content)
+        </div>
+        <div class="form-group">
+            @Html.HiddenFor(m => m.Id)
+            <button type="submit" class="btn btn-default">Submit</button>
+        </div>
+    }
+</div>
+<hr/>
+<div>
+    
+    Preview:
+    <div id="Preview"></div>
+</div>
+
+@section scripts
+{
+    <script src="~/Scripts/commonmark-editor.js"></script>
+}

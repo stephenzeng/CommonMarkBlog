@@ -41,9 +41,11 @@ namespace CommonMarkBlog
 
             if (_documentStore != null) return;
 
-            _documentStore = new EmbeddableDocumentStore()
+            _documentStore = new EmbeddableDocumentStore
             {
-                DataDirectory = "App_Data"
+                DataDirectory = "App_Data",
+                //UseEmbeddedHttpServer = true,
+                //Configuration = {Port = 8888}
             }.Initialize();
         }
     }

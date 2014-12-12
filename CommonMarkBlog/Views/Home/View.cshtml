@@ -1,0 +1,32 @@
+﻿@model CommonMarkBlog.Models.Post
+
+@if (Model != null)
+{
+    <div>
+        <div class="pull-left post-title">@Model.Title</div>
+        <div class="pull-right">@Model.CreatedDate.ToLongDateString() @Model.CreatedDate.ToShortTimeString()</div>
+    </div>
+    <hr/>
+    <div id="post-html">
+    </div>
+    <textarea id="post-md" class="hidden">@Model.Content</textarea>
+
+@section scripts
+{
+    <script>
+        var reader = new commonmark.DocParser();
+        var writer = new commonmark.HtmlRenderer();
+
+        $(function() {
+            var input = reader.parse($("#post-md").html());
+            console.log(input);
+
+            var output = writer.renderBlock(input);
+            console.log(output);
+
+            $("#post-html").html(output);
+        });
+
+    </script>
+}
+}

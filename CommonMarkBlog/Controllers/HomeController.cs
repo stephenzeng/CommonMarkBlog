@@ -1,6 +1,8 @@
-﻿using System.Web.Mvc;
-using System.Web.UI.WebControls;
+﻿using System;
+using System.Linq;
+using System.Web.Mvc;
 using CommonMarkBlog.Models;
+using Raven.Client.Linq;
 
 namespace CommonMarkBlog.Controllers
 {
@@ -8,8 +10,8 @@ namespace CommonMarkBlog.Controllers
     {
         public ActionResult Index()
         {
-            var posts = DocumentSession.Query<Blog>()
-                .OrderbyDesendence(b => b.CreatedDate)
+            var posts = DocumentSession.Query<Post>()
+                .OrderByDescending(b => b.CreatedDate)
                 .ToArray();
 
             return View(posts);
@@ -19,28 +21,54 @@ namespace CommonMarkBlog.Controllers
         {
             if (id.HasValue)
             {
-                blog = DocumentSession.Load<Blog>(id);
-                return blog ? View() : View(blog);
+                var blog = DocumentSession.Load<Post>(id);
+                if (blog == null)
+                {
+                    ViewBag.ErrorMessage = "The post does not exist.";
+                    return View(new Post());
+                }
+                return View(blog);
             }
 
-            return View();
+            return View(new Post());
         }
 
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult Edit(Blog blog)
+        public ActionResult Edit(Post post)
         {
             if (ModelState.IsValid)
             {
-                DocumentSession.Store(blog);
-                ViewBag.InfoMessage = "";
+                if (post.Id == 0)
+                    post.CreatedDate = DateTime.Now;
+
+                DocumentSession.Store(post);
+                ViewBag.InfoMessage = "Post saved successfully.";
             }
             else
             {
-                ViewBag.ErrorMessage = "";
+                ViewBag.ErrorMessage = "The input is invalid.";
             }
 
-            return View(blog);
+            return View(post);
+        }
+
+        public ActionResult View(int? id)
+        {
+            if (id.HasValue)
+            {
+                var blog = DocumentSession.Load<Post>(id);
+
+                if (blog == null)
+                {
+                    ViewBag.ErrorMessage = "The post does not exist.";
+                    return View();
+                }
+
+                return View(blog);
+            }
+
+            return View();
         }
     }
 }

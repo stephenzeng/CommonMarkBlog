@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CommonMarkBlog.Models
 {
-    public class Blog
+    public class Post
     {
         public int Id { get; set; }
 
@@ -14,5 +14,7 @@ namespace CommonMarkBlog.Models
         public string Content { get; set; }
 
         public DateTime CreatedDate { get; set; }
+
+        public DateTime? LastModifiedDate { get; set; }
     }
 }

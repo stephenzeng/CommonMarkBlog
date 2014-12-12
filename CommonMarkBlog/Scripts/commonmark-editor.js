@@ -21,7 +21,7 @@ $(document).ready(function () {
 
     var parseAndRender = function () {
         if (x) {
-            x.abort()
+            x.abort();
         } // If there is an existing XHR, abort it.
         clearTimeout(timer); // Clear the timer so we don't end up with dupes.
         timer = setTimeout(function () { // assign timer a new timeout
